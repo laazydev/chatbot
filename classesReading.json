@@ -1,0 +1,12 @@
+{
+    "classes":[
+        {
+            "keyword": ["order", "buy", "have"],
+            "class": "Order"
+        },
+        {
+            "keyword": ["weather"],
+            "class": "Weather"
+        }
+    ]
+}
