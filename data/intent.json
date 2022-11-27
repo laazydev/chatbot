@@ -4,26 +4,20 @@
             "context": "",
             "patterns": ["hello", "hi there", "good morning", "what's up", "hi", "whats up"],
             "responses": ["Hey!", "How is it going?", "Anything I can help you with?"],
-            "tag": "hello"
-        },
-        {
-            "context": "",
-            "patterns": [],
-            "responses": ["Can you repeat that one more time?", "I am not sure I understand", 
-                "Pardon?", "Server hazy, can you please repeat that one more time?"],
-            "tag": "noanswer"
+            "function": "hello"
         },
         {
             "context": "",
             "patterns": ["How's the weather today?"],
             "responses": ["Go outside and touch some grass"],
-            "tag": "weather"
+            "function": "weather"
         },
         {
             "context": "",
             "patterns": ["coffee"],
             "responses": ["Okay holdon"],
-            "tag": "coffee"    
+            "function": "coffee"    
         }
+
     ]
 }
