@@ -1,19 +1,19 @@
 {
     "intents": [
         {
-            "context": "",
+            "context": "general",
             "patterns": ["hello", "hi there", "good morning", "what's up", "hi", "whats up"],
             "responses": ["Hey!", "How is it going?", "Anything I can help you with?"],
             "function": "hello"
         },
         {
-            "context": "",
-            "patterns": ["How's the weather today?"],
+            "context": "general",
+            "patterns": ["hows the weather today?"],
             "responses": ["Go outside and touch some grass"],
             "function": "weather"
         },
         {
-            "context": "",
+            "context": "order",
             "patterns": ["coffee"],
             "responses": ["Okay holdon"],
             "function": "coffee"    
