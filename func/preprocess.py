@@ -5,6 +5,7 @@ from nltk.corpus import stopwords
 import math
 import re
 from collections import Counter
+import difflib
 
 # Download Stopword library from NLTK
 nltk.download('stopwords')
@@ -54,3 +55,8 @@ def get_cosine(vec1, vec2):
 def text_to_vector(text):
     words = WORD.findall(text)
     return Counter(words)
+
+def checkTypo(a, b):
+    seq = difflib.SequenceMatcher(None, a, b)
+    d = seq.ratio()*100
+    return d
