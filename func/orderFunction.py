@@ -1,3 +1,4 @@
+
 def checkNumber(text):
     oneTrigger = ['one', '1']
     for i in text:
