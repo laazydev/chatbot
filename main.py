@@ -51,10 +51,11 @@ class Pizza:
 
     def getName(self):
         return self.name
-        
-# Reworking on the flow of the chatbot
 
-initialInput = input('Greetings! Before we proceed, may I know your phone number?')
+### Main Chatbot code starts here ###
+### Reworking on the flow of the chatbot ###
+
+initialInput = input('Pizzy: Greetings! Before we proceed, may I know your phone number? \nYou: ')
 
 # Check for phone number [CHECK POINT 1]
 isCust = GetCustomer(checkPhone(initialInput)[1])
@@ -71,14 +72,14 @@ while True:
         # If isCust returns None, means the person is not in database
         if isCust == None:
             # New Customer [DONE]
-            rawInput = input(f'Pizzy: Hi! We havent been friends before. How can I help you today?')
+            rawInput = input(f'Pizzy: Hi! We havent been friends before. How can I help you today?\nYou: ')
         else:
             # Returning Customer [DONE]
-            rawInput = input(f'Pizzy: Welcome back {isCust[0].capitalize()}! How can I help you today?')
+            rawInput = input(f'Pizzy: Welcome back {isCust[0].capitalize()}! How can I help you today?\nYou: ')
 
     else:
         # Second pizza
-        rawInput = input('What will be your next pizza?')
+        rawInput = input('Pizzy: What will be your next pizza?\nYou:')
 
     # Check if any pizza name is in the [DONE]
     for pizzas in listOfPizza:
@@ -92,20 +93,20 @@ while True:
     if len(pizzaOrder) == 1:
         if negationCheck(rawInput) == False:
             tempNegation = [pOrder for pOrder in pizzaOrder][0]
-            finalCheck = input(f'are u sure u want to order {tempNegation}?')
+            finalCheck = input(f'Pizzy: To confirm, do you want to order {tempNegation.capitalize()}?\nYou: ')
             # Final confirmation before proceeding to pizza detail
-            CheckpointOutput = []
-            CheckpointOutput.append(tempNegation)
+            if boolConfirm(finalCheck) == 1:
+                CheckpointOutput = []
+                CheckpointOutput.append(tempNegation)
         else:
-            # There is negation --> Checkpoint 3
+            # There is negation
             print('what do u want?')
     # More than 1 pizza exists
     elif len(pizzaOrder) > 1:
-        print('Sorry! we only serve one pizza at a time! you can place the next one after finishing one pizza.')
+        print('Pizzy: Sorry! we only serve one pizza at a time! You can place the next one after finishing one pizza.')
     # No Pizza exists
     elif len(pizzaOrder) == 0:
-        # No name pizza exist --> Checkpoint 3
-
+        # No name pizza exist
         # Order trigger word exist
         if isOrder(rawInput) == True:
 
@@ -116,7 +117,7 @@ while True:
 
             # Word pizza not exist
             else:
-                print('This chatbot is only taking order for pizza. Would like to have some?')
+                print('Pizzy: For now, I will only be taking orders for Pizzas. Would like to have some?\n You:')
                 
         # Order trigger word is not exist
         else:
@@ -130,34 +131,33 @@ while True:
         crustAvail = currentOrder.getCrust().split(',')
         # Taking size
         while True:
-            sizePrompt = input(f'The available size are {[sizes for sizes in sizeAvail]}. Which size do you want?')
+            sizePrompt = input(f'Pizzy: The available size are {[sizes for sizes in sizeAvail]}. Which size do you want?\n')
             if sizePrompt in sizeAvail:
                 sizeChoice.append(sizePrompt)
                 break
             elif sizePrompt == 'quit':
                 break
             else:
-                print('Please enter a valid size')
+                print('Pizzy: Please enter a valid size')
 
         # Taking crust
         while True:
-            crustPrompt = input(f'The available crusts are {[crusts for crusts in crustAvail]}. Which size do you want?')
+            crustPrompt = input(f'Pizzy: The available crusts are {[crusts for crusts in crustAvail]}. Which size do you want?')
             if crustPrompt in crustAvail:
                 crustChoice.append(crustPrompt)
                 break
             elif crustPrompt == 'quit':
                 break
             else:
-                print('Please enter a valid crust')
+                print('Pizzy: Please enter a valid crust')
 
         # Append pizza to the receipt
-        receipt.append(list([f'{sizeChoice[0].capitalize()} {CheckpointOutput[0].capitalize()} with {crustChoice[0]}.', currentOrder.getPrice()]))
+        receipt.append(list([f'Pizzy: {sizeChoice[0].capitalize()} {CheckpointOutput[0].capitalize()} with {crustChoice[0]}.', currentOrder.getPrice()]))
         
-        anotherOrder = input('Do you want to have another pizza?')
+        anotherOrder = input('Pizzy: Do you want to have another pizza?\n You: ')
         if boolConfirm(anotherOrder) == 1:
             firstEntry = False
         else:
             break
-
 
 print(getReceipt(receipt))

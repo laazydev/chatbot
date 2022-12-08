@@ -41,23 +41,23 @@ def Checkpoint(listOfPizza, pizza_df):
     trialsFlag = 0
     order = []
     for trials in range(0, 3):
-        pizzaOrderInput = input('Pizzy: What pizza do you want?')
+        pizzaOrderInput = input('Pizzy: What pizza do you want?\nYou: ')
 
         # Typo checking is here
         for typoCheck in listOfPizza:
             # Accurate 100%
-            if checkTypo(typoCheck.lower(), pizzaOrderInput) == 100:
-                print(f'You are ordering {typoCheck.capitalize()}')
+            if checkTypo(typoCheck.lower(), pizzaOrderInput.lower()) == 100:
+                print(f'Pizzy: You are ordering {typoCheck.capitalize()}')
                 trialsFlag = 1
                 order.append(typoCheck)
                 break
             
             # Above 80% Confidence
-            elif checkTypo(typoCheck.lower(), pizzaOrderInput) > 80:
-                typoPrompt = input(f'Do you mean by {typoCheck.capitalize()}?')
+            elif checkTypo(typoCheck.lower(), pizzaOrderInput.lower()) > 80:
+                typoPrompt = input(f'Pizzy: Do you mean by {typoCheck.capitalize()}?\n You: ')
                 # Positive confirmation
                 if boolConfirm(typoPrompt) == 1:
-                    print(f'You are orderring {typoCheck.capitalize()}')
+                    print(f'Pizzy: You are orderring {typoCheck.capitalize()}')
                     trialsFlag = 1
                     order.append(typoCheck)
                     break
@@ -72,10 +72,12 @@ def Checkpoint(listOfPizza, pizza_df):
             
             # Under 80% Confidence
             else:
-                rePrintPizza = input('I am not sure I understand. Do you want to see the list of pizza first?')
+                rePrintPizza = input('Pizzy: I am not sure I understand. Do you want to see the list of pizza first?\n You: ')
                 # Positive: Want to see pizza list [DONE]
                 if boolConfirm(rePrintPizza) == 1:
+                    print('\n\n')
                     print(getPizzaList(pizza_df))
+                    print('\n')
                     break
 
                 # Negative: Dont want [DONE]
