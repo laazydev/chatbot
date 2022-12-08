@@ -87,3 +87,28 @@ def getPizzaList(data):
         testinggg.append([data.iloc[j][1].capitalize(), data.iloc[j][10], data.iloc[j][3]])
 
     return tabulate(testinggg, headers=["Pizza name", 'Price', 'Calories'])
+
+def boolConfirm(text):
+    positive_bool = ['yes', 'yesh', 'yeah', 'yup', 'yea', 'yuh']
+    negative_bool= ['no', 'noh', 'nope', 'nah', 'naur', 'naw']
+
+    posFlag = False
+    negFlag = False
+
+    for pos in positive_bool:
+        if pos in text:
+            posFlag = True
+        
+    for neg in negative_bool:
+        if neg in text:
+            negFlag = True
+
+    if posFlag == True and negFlag == False:
+        # Positive
+        return 1
+    elif posFlag == False and negFlag == True:
+        # Negative
+        return -1
+    else:
+        # Not understandable
+        return 0
