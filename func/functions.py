@@ -112,3 +112,6 @@ def boolConfirm(text):
     else:
         # Not understandable
         return 0
+
+def getReceipt(orders, header=['Order Details', 'Price']):
+    return tabulate(orders, header)

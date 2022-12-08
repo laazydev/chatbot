@@ -1,3 +1,5 @@
+from func.functions import getPizzaList, boolConfirm
+from func.preprocess import checkTypo
 
 def checkNumber(text):
     oneTrigger = ['one', '1']
@@ -34,3 +36,56 @@ def confirmation(pizzaName):
             return True
         elif confirmationFlag == -1:
             return False
+
+def Checkpoint(listOfPizza, pizza_df):
+    trialsFlag = 0
+    order = []
+    for trials in range(0, 3):
+        pizzaOrderInput = input('Pizzy: What pizza do you want?')
+
+        # Typo checking is here
+        for typoCheck in listOfPizza:
+            # Accurate 100%
+            if checkTypo(typoCheck.lower(), pizzaOrderInput) == 100:
+                print(f'You are ordering {typoCheck.capitalize()}')
+                trialsFlag = 1
+                order.append(typoCheck)
+                break
+            
+            # Above 80% Confidence
+            elif checkTypo(typoCheck.lower(), pizzaOrderInput) > 80:
+                typoPrompt = input(f'Do you mean by {typoCheck.capitalize()}?')
+                # Positive confirmation
+                if boolConfirm(typoPrompt) == 1:
+                    print(f'You are orderring {typoCheck.capitalize()}')
+                    trialsFlag = 1
+                    order.append(typoCheck)
+                    break
+
+                # Negative Confirmation
+                elif boolConfirm(typoPrompt) == -1:
+                    break
+                
+                # Not understandable response
+                else:
+                    print('Pizzy: I am not sure I understand :.')
+            
+            # Under 80% Confidence
+            else:
+                rePrintPizza = input('I am not sure I understand. Do you want to see the list of pizza first?')
+                # Positive: Want to see pizza list [DONE]
+                if boolConfirm(rePrintPizza) == 1:
+                    print(getPizzaList(pizza_df))
+                    break
+
+                # Negative: Dont want [DONE]
+                elif boolConfirm(rePrintPizza) == -1:
+                    print('Pizzy: Alright, sure sure')
+                    break
+
+        # Checkpoint [DONE]
+        if trialsFlag == 0:
+            pass
+        else:
+            break
+    return order
