@@ -1,30 +1,30 @@
 ﻿id;pizzaName;Description;calories;serves;Size;Crust;Vegetarian;Vegan;Spicy;Price
-1;pepperoni feast;Double Pepperoni, Extra Mozzarella Cheese;2336;2;small,medium,large;stuffed crust,pan;no;yes;no;20,99
-2;loaded pepperoni feast with triple cheese blend;now with Even more Pepperoni, Mozzarella and Triple Cheese Blend;2472;2;small,medium,large;stuffed crust,pan;no;yes;no;22,99
-3;margherita;mozzarella Cheese with Tomato Sauce;1866;2;small,medium,large;stuffed crust,pan;yes;yes;no;16,99
-4;loaded margherita with triple cheese blend;now with even more Mozzarella, Tomato Sauce and Triple Cheese Blend;2136;2;small,medium,large;stuffed crust,pan;yes;yes;no;18,99
-5;loaded chicken supreme with triple cheese blend;now with even more Chicken, Mushrooms, Mixed peppers, Red Onions and Triple Cheese Blend;2048;2;small,medium,large;stuffed crust,pan;no;yes;no;22,99
-6;hawaiian;Ham and Pineapple;1758;2;small,medium,large;stuffed crust,pan;no;yes;no;19,99
-7;loaded hawaiian with tripple cheese blend;now with even more Ham, Pineapple and Triple Cheese Blend;2056;2;small,medium,large;stuffed crust,pan;no;yes;no;21,99
-8;meat feast;Spicy Pork, Ham, Pepperoni, Season Minced Beef;2264;2;small,medium,large;stuffed crust,pan;no;yes;no;20,99
-9;the meaty one;Pepperoni, Spicy Pork, Seasoned Minced Beef, Smoked Bacon, Chicken;2382;2;small,medium,large;stuffed crust,pan;no;yes;no;20,99
-10;farm house;Ham and Mushroom;1742;2;small,medium,large;stuffed crust,pan;no;yes;no;19,99
-11;texan bbq;BBQ Sauce, Smoked Bacon, and Chicken;1984;2;small,medium,large;stuffed crust,pan;no;yes;no;20,99
-12;bbq meat feast;BBQ Sauce, Spicy Pork, Ham, Pepperoni, Seasoned Minced Beef;2336;2;small,medium,large;stuffed crust,pan;no;yes;no;20,99
-13;veggie sizzler;Green Chillies, Jalapenos, Mixed Peppers, and Onion;1710;2;small,medium,large;stuffed crust,pan;yes;yes;yes;18,99
-14;beef sizzler;Green Chillies, Jalapenos, Red Onions, Seasoned Minced Beef;1852;2;small,medium,large;stuffed crust,pan;no;yes;yes;20,99
-15;chicken sizzler;Green Chillies, Jalapenos, Red Onions, and Chicken;1782;2;small,medium,large;stuffed crust,pan;no;yes;yes;20,99
-16;supreme;Pepperoni, Seasoned Minced Beef, Spicy Pork Sausage, Mushrooms, Mixed Peppers, Red Onions;2088;2;small,medium,large;stuffed crust,pan;no;yes;no;18,99
-17;vegetable supreme;Mushrooms, Mixed Peppers, Red Onions, and Tomato;1708;2;small,medium,large;stuffed crust,pan;yes;yes;no;20,99
-18;chicken supreme;Chicken, Mushrooms, Mixed Peppers, and Red Onion;1760;2;small,medium,large;stuffed crust,pan;no;yes;no;16,99
-19;vegan margherita;Vegan Cheese and Tomato Sauce;1462;2;small,medium,large;stuffed crust,pan;yes;yes;no;18,99
-20;vegan veg sizzler;Vegan Cheese, Green Chillies, Jalapenos, Mixed Peppers, and Red Onions;1508;2;small,medium,large;stuffed crust,pan;yes;yes;yes;18,99
-21;vegan veg supreme;Vegan Cheese, Mushrooms, Mixed Peppers, Red Onions, and Tomato;1510;2;small,medium,large;stuffed crust,pan;yes;yes;no;20,99
-22;vegan beyond italian style;Meat-free beyond meat Italian Style Sausage, Vegan Cheese with Peppers, Mushrooms and Red Onions;1728;2;small,medium,large;stuffed crust,pan;yes;yes;no;20,99
-23;beyond three meat three cheese;Meat-free beyond meat Italian Style Sausage, Pork Crumble, Beef Crumble, Mushrooms, Triple Cheese Blend and Red Onions;1914;2;small,medium,large;stuffed crust,pan;yes;no;no;20,99
-24;beyond italian style sausage supreme;Meat-free beyond meat Italian Style Sausage, Mozzarella Cheese with Peppers, Mushrooms and Red Onion;1958;2;small,medium,large;stuffed crust,pan;yes;no;no;20,99
-25;beyond three meat no cheese;Meat-free beyond meat Italian Style Sausage, Pork Crumble, Beef Crumble, Mushrooms, and Red Onions;1932;2;small,medium,large;stuffed crust,pan;yes;yes;no;20,99
-26;beyond beef sizzler;Meat-free beyond meat Crumble, Mozzarella Cheese, Green Chillies, Jalapenos and Red Onions;1838;2;small,medium,large;stuffed crust,pan;yes;no;yes;20,99
-27;bbq steak and chicken flatbread;Individual Flatbread Pizza with BBQ Sauce, Chicken, Steak, Red Onion and Mozzarella Pearls;575;1;none;none;no;yes;no;6,99
-28;chicken and bacon flatbread;Individual Flatbread Pizza with Tomato Sauce, Chicken, Bacon and Mozzarella Pearls;584;1;none;none;no;yes;no;6,99
-29;beyond meat italian style sausage flatbread pizza;Individual Flatbread Pizza with Tomato Sauce, Meat-free beyond Meat Italian Style Sausage, Tomatoes, Pesto Sauce and Mozzarella Pearls;610;1;none;none;yes;yes;no;6,99
+1;pepperoni feast;Double Pepperoni, Extra Mozzarella Cheese;2336;2;small,medium,large;stuffed crust,pan;no;yes;no;20.99
+2;loaded pepperoni feast with triple cheese blend;now with Even more Pepperoni, Mozzarella and Triple Cheese Blend;2472;2;small,medium,large;stuffed crust,pan;no;yes;no;22.99
+3;margherita;mozzarella Cheese with Tomato Sauce;1866;2;small,medium,large;stuffed crust,pan;yes;yes;no;16.99
+4;loaded margherita with triple cheese blend;now with even more Mozzarella, Tomato Sauce and Triple Cheese Blend;2136;2;small,medium,large;stuffed crust,pan;yes;yes;no;18.99
+5;loaded chicken supreme with triple cheese blend;now with even more Chicken, Mushrooms, Mixed peppers, Red Onions and Triple Cheese Blend;2048;2;small,medium,large;stuffed crust,pan;no;yes;no;22.99
+6;hawaiian;Ham and Pineapple;1758;2;small,medium,large;stuffed crust,pan;no;yes;no;19.99
+7;loaded hawaiian with tripple cheese blend;now with even more Ham, Pineapple and Triple Cheese Blend;2056;2;small,medium,large;stuffed crust,pan;no;yes;no;21.99
+8;meat feast;Spicy Pork, Ham, Pepperoni, Season Minced Beef;2264;2;small,medium,large;stuffed crust,pan;no;yes;no;20.99
+9;the meaty one;Pepperoni, Spicy Pork, Seasoned Minced Beef, Smoked Bacon, Chicken;2382;2;small,medium,large;stuffed crust,pan;no;yes;no;20.99
+10;farm house;Ham and Mushroom;1742;2;small,medium,large;stuffed crust,pan;no;yes;no;19.99
+11;texan bbq;BBQ Sauce, Smoked Bacon, and Chicken;1984;2;small,medium,large;stuffed crust,pan;no;yes;no;20.99
+12;bbq meat feast;BBQ Sauce, Spicy Pork, Ham, Pepperoni, Seasoned Minced Beef;2336;2;small,medium,large;stuffed crust,pan;no;yes;no;20.99
+13;veggie sizzler;Green Chillies, Jalapenos, Mixed Peppers, and Onion;1710;2;small,medium,large;stuffed crust,pan;yes;yes;yes;18.99
+14;beef sizzler;Green Chillies, Jalapenos, Red Onions, Seasoned Minced Beef;1852;2;small,medium,large;stuffed crust,pan;no;yes;yes;20.99
+15;chicken sizzler;Green Chillies, Jalapenos, Red Onions, and Chicken;1782;2;small,medium,large;stuffed crust,pan;no;yes;yes;20.99
+16;supreme;Pepperoni, Seasoned Minced Beef, Spicy Pork Sausage, Mushrooms, Mixed Peppers, Red Onions;2088;2;small,medium,large;stuffed crust,pan;no;yes;no;18.99
+17;vegetable supreme;Mushrooms, Mixed Peppers, Red Onions, and Tomato;1708;2;small,medium,large;stuffed crust,pan;yes;yes;no;20.99
+18;chicken supreme;Chicken, Mushrooms, Mixed Peppers, and Red Onion;1760;2;small,medium,large;stuffed crust,pan;no;yes;no;16.99
+19;vegan margherita;Vegan Cheese and Tomato Sauce;1462;2;small,medium,large;stuffed crust,pan;yes;yes;no;18.99
+20;vegan veg sizzler;Vegan Cheese, Green Chillies, Jalapenos, Mixed Peppers, and Red Onions;1508;2;small,medium,large;stuffed crust,pan;yes;yes;yes;18.99
+21;vegan veg supreme;Vegan Cheese, Mushrooms, Mixed Peppers, Red Onions, and Tomato;1510;2;small,medium,large;stuffed crust,pan;yes;yes;no;20.99
+22;vegan beyond italian style;Meat-free beyond meat Italian Style Sausage, Vegan Cheese with Peppers, Mushrooms and Red Onions;1728;2;small,medium,large;stuffed crust,pan;yes;yes;no;20.99
+23;beyond three meat three cheese;Meat-free beyond meat Italian Style Sausage, Pork Crumble, Beef Crumble, Mushrooms, Triple Cheese Blend and Red Onions;1914;2;small,medium,large;stuffed crust,pan;yes;no;no;20.99
+24;beyond italian style sausage supreme;Meat-free beyond meat Italian Style Sausage, Mozzarella Cheese with Peppers, Mushrooms and Red Onion;1958;2;small,medium,large;stuffed crust,pan;yes;no;no;20.99
+25;beyond three meat no cheese;Meat-free beyond meat Italian Style Sausage, Pork Crumble, Beef Crumble, Mushrooms, and Red Onions;1932;2;small,medium,large;stuffed crust,pan;yes;yes;no;20.99
+26;beyond beef sizzler;Meat-free beyond meat Crumble, Mozzarella Cheese, Green Chillies, Jalapenos and Red Onions;1838;2;small,medium,large;stuffed crust,pan;yes;no;yes;20.99
+27;bbq steak and chicken flatbread;Individual Flatbread Pizza with BBQ Sauce, Chicken, Steak, Red Onion and Mozzarella Pearls;575;1;none;none;no;yes;no;6.99
+28;chicken and bacon flatbread;Individual Flatbread Pizza with Tomato Sauce, Chicken, Bacon and Mozzarella Pearls;584;1;none;none;no;yes;no;6.99
+29;beyond meat italian style sausage flatbread pizza;Individual Flatbread Pizza with Tomato Sauce, Meat-free beyond Meat Italian Style Sausage, Tomatoes, Pesto Sauce and Mozzarella Pearls;610;1;none;none;yes;yes;no;6.99
