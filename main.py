@@ -1,4 +1,4 @@
-from importance.funcs import GetCustomer, checkPhone, negationCheck, isOrder, isPizza, getPizzaList, boolConfirm, getReceipt
+from importance.funcs import GetCustomer, checkPhone, negationCheck, isOrder, isPizza, getPizzaList, boolConfirm, getReceipt, NewCustomer
 
 # Import preprocess functions from preprocess.py
 from func.preprocess import preprocess, text_to_vector, get_cosine, checkTypo, getReco, getBill
@@ -158,7 +158,6 @@ while True:
         else:
             break
 
-print(getReceipt(receipt))
 if isCust != None:
     print(getReceipt(receipt))
     print(f'\nThankyou {isCust[0].capitalize()} for orderring! The total is {getBill(pizzaOrder)}')
@@ -178,6 +177,8 @@ else:
             break
         else:
             pass
+
+    NewCustomer(namePrompt.capitalize(), initialInput, addPrompt)
     print(getReceipt(receipt))
     print(f'\nThankyou {namePrompt.capitalize()} for orderring! The total is {getBill(pizzaOrder)}')
     print(f'Your pizza will be delivered to {addPrompt}. See you next time!')
