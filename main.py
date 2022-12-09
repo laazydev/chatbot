@@ -54,6 +54,7 @@ firstEntry = True
 # List of pizza getting ordered
 pizzaOrder = []
 while True:
+    rawInput = ''
     if firstEntry == True:
         # If isCust returns None, means the person is not in database
         if isCust == None:
@@ -182,6 +183,11 @@ else:
     print(f'Thankyou {namePrompt.capitalize()} for orderring! The total is {getBill(pizzaOrder)}')
     print(f'Your pizza will be delivered to {addPrompt}. See you next time!')
 
-
+#%%
+a = ''
+a = 'hi'
+print(a)
+a = 'no'
+print(a)
 
 
