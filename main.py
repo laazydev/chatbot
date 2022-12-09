@@ -12,7 +12,7 @@ from func.orderFunction import checkNumber, confirmation, Checkpoint
 
 from func.additionals import clear, opening
 
-from pizza import Pizza
+from importance.pizza import Pizza
 
 # Import online libraries
 import pandas as pd
@@ -87,6 +87,7 @@ while True:
             if boolConfirm(finalCheck) == 1:
                 CheckpointOutput = []
                 CheckpointOutput.append(tempNegation)
+                pizzaOrder.append(tempNegation)
         else:
             # There is negation
             print('what do u want?')
@@ -103,6 +104,7 @@ while True:
             if isPizza(rawInput) == True:
                 
                 CheckpointOutput = Checkpoint(listOfPizza, pizza_df)
+                pizzaOrder.append(CheckpointOutput[0])
 
             # Word pizza not exist
             else:
@@ -122,7 +124,6 @@ while True:
                 CheckpointOutput = Checkpoint(listOfPizza, pizza_df)
                 # Return back to how can i help you
 
-####### NONONONO
     if len(CheckpointOutput) == 1:
         sizeChoice = []
         crustChoice = []
@@ -162,7 +163,8 @@ while True:
 
 print(getReceipt(receipt))
 if isCust != None:
-    print(f'Thankyou {isCust[0].capitalize()} for orderring! The total is {getBill(pizzaOrder)}')
+    print(getReceipt(receipt))
+    print(f'\nThankyou {isCust[0].capitalize()} for orderring! The total is {getBill(pizzaOrder)}')
     print(f'Your pizza will be delivered to {isCust[1]}. See you next time!')
 else:
     while True:
@@ -179,15 +181,6 @@ else:
             break
         else:
             pass
-
-    print(f'Thankyou {namePrompt.capitalize()} for orderring! The total is {getBill(pizzaOrder)}')
+    print(getReceipt(receipt))
+    print(f'\nThankyou {namePrompt.capitalize()} for orderring! The total is {getBill(pizzaOrder)}')
     print(f'Your pizza will be delivered to {addPrompt}. See you next time!')
-
-#%%
-a = ''
-a = 'hi'
-print(a)
-a = 'no'
-print(a)
-
-

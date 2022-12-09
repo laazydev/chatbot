@@ -40,8 +40,23 @@ def confirmation(pizzaName):
 def Checkpoint(listOfPizza, pizza_df):
     trialsFlag = 0
     order = []
-    for trials in range(0, 3):
+    while True:
+        trials = 0
+        if trials == 2:
+            rePrintPizza = input('Pizzy: Do you want to see the list of pizza first?\nYou: ')
+            # Positive: Want to see pizza list [DONE]
+            if boolConfirm(rePrintPizza) == 1:
+                print('\n')
+                print(getPizzaList(pizza_df))
+                break
+
+            # Negative: Dont want [DONE]
+            elif boolConfirm(rePrintPizza) == -1:
+                print('Pizzy: Alright, sure sure')
+                break
+
         pizzaOrderInput = input('Pizzy: What pizza do you want?\nYou: ')
+        flagOrder = False
 
         # Typo checking is here
         for typoCheck in listOfPizza:
@@ -50,6 +65,7 @@ def Checkpoint(listOfPizza, pizza_df):
                 print(f'Pizzy: You are ordering {typoCheck.capitalize()}')
                 trialsFlag = 1
                 order.append(typoCheck)
+                flagOrder = True
                 break
             
             # Above 80% Confidence
@@ -60,6 +76,7 @@ def Checkpoint(listOfPizza, pizza_df):
                     print(f'Pizzy: You are orderring {typoCheck.capitalize()}')
                     trialsFlag = 1
                     order.append(typoCheck)
+                    flagOrder = True
                     break
 
                 # Negative Confirmation
@@ -72,17 +89,22 @@ def Checkpoint(listOfPizza, pizza_df):
             
             # Under 80% Confidence
             else:
-                rePrintPizza = input('Pizzy: Do you want to see the list of pizza first?\nYou: ')
-                # Positive: Want to see pizza list [DONE]
-                if boolConfirm(rePrintPizza) == 1:
-                    print('\n')
-                    print(getPizzaList(pizza_df))
-                    break
+                pass
+        
+        if flagOrder == True:
+            break
+        else:
+            rePrintPizza = input('Pizzy: Do you want to see the list of pizza first?\nYou: ')
+            # Positive: Want to see pizza list [DONE]
+            if boolConfirm(rePrintPizza) == 1:
+                print('\n')
+                print(getPizzaList(pizza_df))
 
-                # Negative: Dont want [DONE]
-                elif boolConfirm(rePrintPizza) == -1:
-                    print('Pizzy: Alright, sure sure')
-                    break
+            # Negative: Dont want [DONE]
+            elif boolConfirm(rePrintPizza) == -1:
+                print('Pizzy: Alright, sure sure')
+                break
+
 
         # Checkpoint [DONE]
         if trialsFlag == 0:
