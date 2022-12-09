@@ -1,7 +1,3 @@
-
-
-# from func.functions2 import NewCustomer, GetCustomer, checkPhone, negationCheck, isOrder, isPizza, getPizzaList, boolConfirm, getReceipt
-
 from importance.funcs import GetCustomer, checkPhone, negationCheck, isOrder, isPizza, getPizzaList, boolConfirm, getReceipt
 
 # Import preprocess functions from preprocess.py
@@ -71,7 +67,6 @@ while True:
     # Check if any pizza name is in the [DONE]
     for pizzas in listOfPizza:
         if pizzas in rawInput:
-            pizzaOrder.append(pizzas)
             CheckpointOutput = []
             CheckpointOutput.append(pizzas)
         else:
@@ -87,7 +82,6 @@ while True:
             if boolConfirm(finalCheck) == 1:
                 CheckpointOutput = []
                 CheckpointOutput.append(tempNegation)
-                pizzaOrder.append(tempNegation)
         else:
             # There is negation
             print('what do u want?')
@@ -104,7 +98,6 @@ while True:
             if isPizza(rawInput) == True:
                 
                 CheckpointOutput = Checkpoint(listOfPizza, pizza_df)
-                pizzaOrder.append(CheckpointOutput[0])
 
             # Word pizza not exist
             else:
@@ -153,8 +146,12 @@ while True:
                 print('Pizzy: Please enter a valid crust')
 
         # Append pizza to the receipt
-        receipt.append(list([f'Pizzy: {sizeChoice[0].capitalize()} {CheckpointOutput[0].capitalize()} with {crustChoice[0]}.', currentOrder.getPrice()]))
+        receipt.append(list([f'{sizeChoice[0].capitalize()} {CheckpointOutput[0].capitalize()} with {crustChoice[0]}.', currentOrder.getPrice()]))
         
+        # Append pizza to the orderlist
+        pizzaOrder.append(CheckpointOutput[0])
+
+
         anotherOrder = input('\nPizzy: Do you want to have another pizza?\nYou: ')
         if boolConfirm(anotherOrder) == 1:
             firstEntry = False

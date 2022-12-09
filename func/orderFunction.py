@@ -1,5 +1,6 @@
 from importance.funcs import getPizzaList, boolConfirm
 from func.preprocess import checkTypo
+from func.preprocess import getReco
 
 def checkNumber(text):
     oneTrigger = ['one', '1']
@@ -102,7 +103,11 @@ def Checkpoint(listOfPizza, pizza_df):
 
             # Negative: Dont want [DONE]
             elif boolConfirm(rePrintPizza) == -1:
-                print('Pizzy: Alright, sure sure')
+                recoPromtpt = input('\nPizzy: Do you want to get a recommendation in picking your food?\nYou: ')
+                # True
+                if boolConfirm(recoPromtpt) == 1:
+                    keywordPrompt = input('\nPizzy: How do you like your pizza?\nYou: ')
+                    print(getReco(keywordPrompt))
                 break
 
 
