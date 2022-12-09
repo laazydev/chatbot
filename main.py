@@ -1,11 +1,18 @@
-# Import functions from funtions.py
-from func.functions import NewCustomer, GetCustomer, checkPhone, negationCheck, isOrder, isPizza, getPizzaList, boolConfirm, getReceipt
+
+
+# from func.functions2 import NewCustomer, GetCustomer, checkPhone, negationCheck, isOrder, isPizza, getPizzaList, boolConfirm, getReceipt
+
+from importance.funcs import GetCustomer, checkPhone, negationCheck, isOrder, isPizza, getPizzaList, boolConfirm, getReceipt
 
 # Import preprocess functions from preprocess.py
-from func.preprocess import preprocess, text_to_vector, get_cosine, checkTypo
+from func.preprocess import preprocess, text_to_vector, get_cosine, checkTypo, getReco, getBill
 
 # Import Order related functions from orderFunction.py
 from func.orderFunction import checkNumber, confirmation, Checkpoint
+
+from func.additionals import clear, opening
+
+from pizza import Pizza
 
 # Import online libraries
 import pandas as pd
@@ -19,45 +26,24 @@ for pizzaKind in pizza_df['pizzaName'].unique():
 # Loading customer database
 customer = pd.read_csv('database/customer.csv')
 
-
-# Pizza Class declaration
-class Pizza:
-    def __init__(self, name, size='small', crust='pan', pizza_df=pizza_df):
-        self.name = name
-        id = [pizza_df.iloc[i, 0] for i in range(len(pizza_df)) if pizza_df.iloc[i, 1] == name][0]
-        self.description = pizza_df.iloc[id-1, 2]
-        self.calories = pizza_df.iloc[id-1, 3]
-        self.serves = pizza_df.iloc[id-1, 4]
-        self.size = size
-        self.crust = crust
-        self.isVegetarian = pizza_df.iloc[id-1, 7]
-        self.isVegan = pizza_df.iloc[id-1, 8]
-        self.isSpicy = pizza_df.iloc[id-1, 9]
-        self.price = pizza_df.iloc[id-1, 10]
-        self.sizeAvailable = pizza_df.iloc[id-1, 5]
-        self.crustAvailable = pizza_df.iloc[id-1, 6]
-
-    def __str__(self):
-        return self.description
-    
-    def getPrice(self):
-        return self.price
-    
-    def getSize(self):
-        return self.sizeAvailable
-
-    def getCrust(self):
-        return self.crustAvailable
-
-    def getName(self):
-        return self.name
-
 ### Main Chatbot code starts here ###
 ### Reworking on the flow of the chatbot ###
+clear()
+pflag = False
 
-initialInput = input('Pizzy: Greetings! Before we proceed, may I know your phone number? \nYou: ')
-
+opening()
 # Check for phone number [CHECK POINT 1]
+while True:
+    if pflag == False:
+        initialInput = input('\nPizzy: Greetings! Before we proceed, please enter your phone number. \nYou: ')
+    else:
+        initialInput = input('\nPizzy: Please enter a correct UK phone number.\nYou: ')
+
+    if checkPhone(initialInput)[0] == 0:
+        pflag = True
+    else:
+        break
+
 isCust = GetCustomer(checkPhone(initialInput)[1])
 
 # Final Receipt
@@ -72,19 +58,21 @@ while True:
         # If isCust returns None, means the person is not in database
         if isCust == None:
             # New Customer [DONE]
-            rawInput = input(f'Pizzy: Hi! We havent been friends before. How can I help you today?\nYou: ')
+            rawInput = input(f'\nPizzy: Hi! We havent been friends before. How can I help you today?\nYou: ')
         else:
             # Returning Customer [DONE]
-            rawInput = input(f'Pizzy: Welcome back {isCust[0].capitalize()}! How can I help you today?\nYou: ')
+            rawInput = input(f'\nPizzy: Welcome back {isCust[0].capitalize()}! How can I help you today?\nYou: ')
 
-    else:
+    elif firstEntry == False:
         # Second pizza
-        rawInput = input('Pizzy: What will be your next pizza?\nYou:')
+        rawInput = input('\nPizzy: What will be your next pizza?\nYou:')
 
     # Check if any pizza name is in the [DONE]
     for pizzas in listOfPizza:
         if pizzas in rawInput:
             pizzaOrder.append(pizzas)
+            CheckpointOutput = []
+            CheckpointOutput.append(pizzas)
         else:
             pass
 
@@ -93,7 +81,7 @@ while True:
     if len(pizzaOrder) == 1:
         if negationCheck(rawInput) == False:
             tempNegation = [pOrder for pOrder in pizzaOrder][0]
-            finalCheck = input(f'Pizzy: To confirm, do you want to order {tempNegation.capitalize()}?\nYou: ')
+            finalCheck = input(f'\nPizzy: To confirm, do you want to order {tempNegation.capitalize()}?\nYou: ')
             # Final confirmation before proceeding to pizza detail
             if boolConfirm(finalCheck) == 1:
                 CheckpointOutput = []
@@ -117,12 +105,23 @@ while True:
 
             # Word pizza not exist
             else:
-                print('Pizzy: For now, I will only be taking orders for Pizzas. Would like to have some?\n You:')
+                boolOptions = input('\nPizzy: For now, I will only be taking orders for Pizzas. Would like to have some?\nYou: ')
+                if boolConfirm(boolOptions) == 1:
+                    keywordPrompt = input('\nPizzy: How do you like your pizza?\n You:')
+                    print(getReco(keywordPrompt))
+                    CheckpointOutput = Checkpoint(listOfPizza, pizza_df)
                 
         # Order trigger word is not exist
         else:
-            print('General talk huh')
+            recoPromtpt = input('\nPizzy: Do you want to get a recommendation in picking your food?\nYou: ')
+            # True
+            if boolConfirm(recoPromtpt) == 1:
+                keywordPrompt = input('\nPizzy: How do you like your pizza?\nYou: ')
+                print(getReco(keywordPrompt))
+                CheckpointOutput = Checkpoint(listOfPizza, pizza_df)
+                # Return back to how can i help you
 
+####### NONONONO
     if len(CheckpointOutput) == 1:
         sizeChoice = []
         crustChoice = []
@@ -131,7 +130,7 @@ while True:
         crustAvail = currentOrder.getCrust().split(',')
         # Taking size
         while True:
-            sizePrompt = input(f'Pizzy: The available size are {[sizes for sizes in sizeAvail]}. Which size do you want?\n')
+            sizePrompt = input(f'\nPizzy: The available size are {[sizes for sizes in sizeAvail]}. Which size do you want?\nYou: ')
             if sizePrompt in sizeAvail:
                 sizeChoice.append(sizePrompt)
                 break
@@ -142,7 +141,7 @@ while True:
 
         # Taking crust
         while True:
-            crustPrompt = input(f'Pizzy: The available crusts are {[crusts for crusts in crustAvail]}. Which size do you want?')
+            crustPrompt = input(f'\nPizzy: The available crusts are {[crusts for crusts in crustAvail]}. Which size do you want?\nYou:')
             if crustPrompt in crustAvail:
                 crustChoice.append(crustPrompt)
                 break
@@ -154,10 +153,35 @@ while True:
         # Append pizza to the receipt
         receipt.append(list([f'Pizzy: {sizeChoice[0].capitalize()} {CheckpointOutput[0].capitalize()} with {crustChoice[0]}.', currentOrder.getPrice()]))
         
-        anotherOrder = input('Pizzy: Do you want to have another pizza?\n You: ')
+        anotherOrder = input('\nPizzy: Do you want to have another pizza?\nYou: ')
         if boolConfirm(anotherOrder) == 1:
             firstEntry = False
         else:
             break
 
 print(getReceipt(receipt))
+if isCust != None:
+    print(f'Thankyou {isCust[0].capitalize()} for orderring! The total is {getBill(pizzaOrder)}')
+    print(f'Your pizza will be delivered to {isCust[1]}. See you next time!')
+else:
+    while True:
+        addPrompt = input('\nPizzy: Please input your address here.\nYou: ')
+        addConf = input(f'\nPizzy: Is it true that {addPrompt} is your address?\nYou: ')
+        if boolConfirm(addConf) == 1:
+            break
+        else:
+            pass
+    while True:
+        namePrompt = input('\nPizzy: What should we call you?\nYou: ')
+        nameConf = input(f'\nDo you want me to call you {namePrompt}?\nYou: ')
+        if boolConfirm(nameConf) == 1:
+            break
+        else:
+            pass
+
+    print(f'Thankyou {namePrompt.capitalize()} for orderring! The total is {getBill(pizzaOrder)}')
+    print(f'Your pizza will be delivered to {addPrompt}. See you next time!')
+
+
+
+

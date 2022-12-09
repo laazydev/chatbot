@@ -1,4 +1,4 @@
-from func.functions import getPizzaList, boolConfirm
+from importance.funcs import getPizzaList, boolConfirm
 from func.preprocess import checkTypo
 
 def checkNumber(text):
@@ -72,12 +72,11 @@ def Checkpoint(listOfPizza, pizza_df):
             
             # Under 80% Confidence
             else:
-                rePrintPizza = input('Pizzy: I am not sure I understand. Do you want to see the list of pizza first?\n You: ')
+                rePrintPizza = input('Pizzy: Do you want to see the list of pizza first?\nYou: ')
                 # Positive: Want to see pizza list [DONE]
                 if boolConfirm(rePrintPizza) == 1:
-                    print('\n\n')
-                    print(getPizzaList(pizza_df))
                     print('\n')
+                    print(getPizzaList(pizza_df))
                     break
 
                 # Negative: Dont want [DONE]

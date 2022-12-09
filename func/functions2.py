@@ -8,7 +8,6 @@ from nltk.tokenize import word_tokenize
 import string
 from tabulate import tabulate
 
-
 ## Function lists
 def NewCustomer(name, phone, address):
     # Read the latest CSV

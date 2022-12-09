@@ -6,6 +6,8 @@ import math
 import re
 from collections import Counter
 import difflib
+import pandas as pd
+from tabulate import tabulate
 
 # Download Stopword library from NLTK
 nltk.download('stopwords')
@@ -14,6 +16,9 @@ stopwords = stopwords.words('english')
 # Remove negation
 stopwords.remove('not')
 stopwords.remove('with')
+
+# Import database
+pizza_df = pd.read_csv('pizza.csv', sep=';')
 
 def preprocess(textinput):
     # Lower all characters
@@ -60,3 +65,23 @@ def checkTypo(a, b):
     seq = difflib.SequenceMatcher(None, a, b)
     d = seq.ratio()*100
     return d
+
+def getReco(text, dataframe=pizza_df):
+    texttovec = text_to_vector(text)
+    toReco = []
+
+    for i in range(len(dataframe)):
+        tempvec = text_to_vector(pizza_df.iloc[i][2].lower())
+        stringvec = text_to_vector(text.lower())
+        if get_cosine(tempvec, stringvec) != 0: toReco.append([pizza_df.iloc[i][1].capitalize(), pizza_df.iloc[i][10]])
+        
+    return tabulate(toReco, headers=['Pizza Name', 'Price'])
+    
+def getBill(pizzaOrder):
+    totalPrice = 0
+    pizza_df = pd.read_csv('pizza.csv', sep=';')
+    for m in pizzaOrder:
+        for n in range(len(pizza_df)):
+            if pizza_df.iloc[n][1] == m:
+                totalPrice += pizza_df.iloc[n][10]
+    return totalPrice
